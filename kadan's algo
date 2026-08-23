@@ -1,5 +1,48 @@
+//maximum subarray sum
 public class kadansalgo{
-      //simple kadans algo(for positive or negative both mixed no)
+ //maximum subarray sum (bruit force) tc = o(n3)
+    public static int maxsubarrsum(int [] arr){
+        int sum =0;
+        int maxsum =Integer.MIN_VALUE;
+        for(int i=0;i<=arr.length-1;i++){
+            for(int j=i;j<arr.length;j++){
+                sum =0;
+                for(int k = i;k<=j;k++){
+                    sum += arr[k];
+                }
+                if(sum>maxsum){
+                    maxsum = sum;
+                }
+            }
+        }
+        return maxsum;
+    }
+    //maxsubarra
+
+//maxsubarray sum using prifix array optimize approach tc = o(n2)
+    public static int prifixsum(int[] arr){
+        int sum = 0;
+        int maxsum = Integer.MIN_VALUE;
+        int[] prifix = new int[arr.length];
+        prifix[0] = arr[0];
+        for(int i=1;i<arr.length;i++){
+            prifix[i] = prifix[i-1] + arr[i];
+        }
+        for(int i=0;i<=arr.length-1;i++){
+            for(int j=i;j<arr.length;j++){
+                if(i==0){
+                    sum = prifix[j];
+                }else{
+                    sum = prifix[j] - prifix[i-1];
+                }
+                if(sum>maxsum){
+                maxsum = sum;
+            }
+            }
+        }
+        return maxsum;
+    }
+      //simple kadans algo(for positive or negative both mixed no) tc = o(n)
     public static int kadans(int[] arr){
         int currsum = 0;
         int maxsum = Integer.MIN_VALUE;
