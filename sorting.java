@@ -42,7 +42,26 @@ public class sorting {
             arr[prev+1] = curr;
         }
     }
-    //print an array for sorrting
+     // counting sort
+    public static void countingsort(int[] arr){
+        int max = arr[0];
+        for(int i=1;i<=arr.length-1;i++){
+            max = Math.max(max, arr[i]);
+        }
+        int[] count = new int[max+1];
+        for(int i=0;i<=arr.length-1;i++){
+            count[arr[i]]++;
+        }
+        int index = 0;
+        for(int i=0;i<count.length;i++){
+            while(count[i] > 0){
+                arr[index] = i;
+                index++;
+                count[i]--;
+            }
+        }
+    }
+       //print an array for sorrting
     public static void printArray(int[] arr){
         for(int i=0;i<=arr.length-1;i++){
             System.out.print(arr[i]+" ");
