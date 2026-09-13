@@ -31,6 +31,35 @@ public class string {
         double shortpath = Math.sqrt(x*x+y*y);
         return shortpath;
     }
+     // find substring
+    public static String substring(String str, int si, int ei){
+        String substr = "";
+        for(int i= si;i<ei;i++){
+            substr += str.charAt(i);
+        }
+        return substr;
+    }
+    //largest string find in lexicografically order
+    public static String largstr(String[] str){
+        String larg = str[0];
+        for(int i=1;i<str.length;i++){
+            if(larg.compareToIgnoreCase(str[i]) < 0){
+                larg = str[i];
+            }
+        }
+        return larg;
+    }
+    //converst each word 1st letter to uppercase
+    public static StringBuilder firstletteruppercasechar(StringBuilder sb){
+       char ch = Character.toUpperCase(sb.charAt(0));
+       sb.setCharAt(0, ch);
+       for(int i=1;i<sb.length();i++){
+         if(sb.charAt(i) == ' ' && i+1 < sb.length()){
+            sb.setCharAt(i+1, Character.toUpperCase(sb.charAt(i+1)));
+         }
+       }
+       return sb;
+    }
     public static void main(String[] args) {
         String str ="nee";
         System.out.println(findshortpath(str));
