@@ -331,4 +331,16 @@ public class array {
         }
         return count;
     }
+    //rotate array brute force n(n2)
+public static int[] rotatearr(int[] arr, int k){
+    for(int i=0;i<k;i++){
+        int temp = arr[arr.length-1];
+         for(int j=arr.length-1;j>=1;j--){
+            arr[j] = arr[j-1];
+    }
+    arr[0] = temp;
+    }
+    return arr;
+}
+}
     
