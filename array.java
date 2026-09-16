@@ -342,5 +342,37 @@ public static int[] rotatearr(int[] arr, int k){
     }
     return arr;
 }
+    //rotate array ioptimal app using revrse the array
+      public static int[] rotate(int[] nums, int k) {
+        k = k % nums.length;
+        int st=0;
+    int end = nums.length-1;
+    while(st<end){
+        int temp = nums[st];
+        nums[st] = nums[end];
+        nums[end] = temp;
+        st++;
+        end--;
+    }
+    int left=0;
+    int right = k-1;
+    while(left<right){
+        int temp = nums[left];
+        nums[left] = nums[right];
+        nums[right] = temp;
+        left++;
+        right--;
+    }
+    int start = k;
+    int end2 = nums.length-1;
+    while(start<end2){
+        int temp = nums[start];
+        nums[start] = nums[end2];
+        nums[end2] = temp;
+        start++;
+        end2--;
+    }
+    return nums;
+    }
 }
     
