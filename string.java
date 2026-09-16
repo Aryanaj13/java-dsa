@@ -60,8 +60,25 @@ public class string {
        }
        return sb;
     }
-    public static void main(String[] args) {
-        String str ="nee";
-        System.out.println(findshortpath(str));
+     //valid palindrm
+    public static  boolean validpalindrom(String str){
+        int st = 0;
+        int end = str.length()-1;
+        while(st<end){
+            if(!Character.isLetterOrDigit(str.charAt(st))){
+                st++;
+                continue;
+            }
+            if(!Character.isLetterOrDigit(str.charAt(end))){
+                end--;
+                continue;
+            }
+            if(Character.toLowerCase(str.charAt(st))  !=  Character.toLowerCase(str.charAt(end))){
+                return false;
+            }
+            st++;
+            end--;
+        }
+        return true;
     }
 }
