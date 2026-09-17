@@ -102,4 +102,50 @@ public class string {
         }
         return  freq;
     }
+     //reverse string
+    public static char[] reversestr(char[] s){
+        int st = 0;
+        int end = s.length-1;
+        while(st<end){
+            char temp = s[st];
+            s[st] = s[end];
+            s[end] = temp;
+            st++;
+            end--;
+        }
+        return s;
+    }
+    //valid anagram
+    public static boolean validanagram(String str1, String str2){
+        int[] freq = new int[26];
+        if(str1.length() != str2.length()){
+            return false;
+        }else{
+            for(int i=0;i<str1.length();i++){
+                freq[str1.charAt(i)-'a']++;
+            }
+            for(int j=0;j<str2.length();j++){
+                freq[str2.charAt(j)-'a']--;
+            }
+            for(int i=0;i<26;i++){
+                if(freq[i]!=0){
+                    return false;
+                }
+            }
+        }
+        return  true;
+    }
+    //first unique char in string
+    public static int unique1stchar(String str){
+        int[] freq = new int[26];
+        for(int i=0;i<str.length();i++){
+            freq[str.charAt(i) - 'a']++;
+        }
+        for(int i=0;i<str.length();i++){
+            if(freq[str.charAt(i)-'a'] == 1){
+            return i;
+        }
+        }
+        return -1;
+    }
 }
