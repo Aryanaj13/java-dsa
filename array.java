@@ -374,5 +374,21 @@ public static int[] rotatearr(int[] arr, int k){
     }
     return nums;
     }
+    
+    //best time to buy & sell the stock-2
+public static int buysellstock2(int[] arr){
+    int bp = arr[0];
+    int maxprof = 0;
+    for(int i=1;i<arr.length;i++){
+        int profit = arr[i] - bp;
+        if(profit > 0){
+            maxprof += profit;
+            bp =arr[i];
+        }else{
+            bp =arr[i];
+        }
+        }
+        return maxprof;
+    }
 }
     
