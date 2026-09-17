@@ -148,4 +148,22 @@ public class string {
         }
         return -1;
     }
+     //rotate string
+    public static boolean rotatestring(String str, String goal){
+        if(str.length() != goal.length()){
+            return false;
+        }
+            char[] arr = str.toCharArray();
+            for(int j=0;j<str.length();j++){
+                char temp = arr[0];
+                for(int i=0;i<str.length()-1;i++){
+                    arr[i] = arr[i+1];
+                }
+                arr[str.length()-1] = temp;
+                if(new String(arr).equals(goal)){
+                    return  true;
+                }
+            }
+            return false;
+}
 }
