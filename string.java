@@ -81,4 +81,25 @@ public class string {
         }
         return true;
     }
+     //count vowel
+    public static int countvowel(String str){
+        int count = 0;
+        for(int i=0;i<=str.length()-1;i++){
+           char ch = Character.toLowerCase(str.charAt(i));
+            if(ch == 'a' || ch =='e' || ch=='i' || ch == 'o' || ch == 'u'){
+                count++;
+            }
+        }
+        return count;
+    }
+    //character freq count
+    public static int charfreq(String str, char ch){
+        int freq = 0;
+        for(int i=0;i<str.length();i++){
+            if(str.charAt(i) == ch){
+                freq++;
+            }
+        }
+        return  freq;
+    }
 }
