@@ -390,5 +390,35 @@ public static int buysellstock2(int[] arr){
         }
         return maxprof;
     }
+    //square of a sorted array (bruite force) 0(nlogn)
+    public static int[] sqrsortarr(int[] arr){
+        int i;
+        for( i=0;i<arr.length;i++){
+            arr[i]=arr[i]*arr[i];
+        }
+        Arrays.sort(arr);
+        return arr;
+    }
+    // optimized app using 2 pointer 0(n)
+    public static int[] opsqrsortarr(int[] arr){
+        int[] result = new int[arr.length];
+        int st=0;
+        int end = arr.length-1;
+        int pos = result.length-1;
+        while(st<=end){
+            int stsqr = arr[st]*arr[st]; 
+            int endsqr = arr[end]*arr[end];
+            if(stsqr<endsqr){
+                result[pos] = endsqr;
+                end--;
+                pos--;
+            }else{
+                result[pos] = stsqr;
+                st++;
+                pos--;
+            }
+        }
+      return result;
+    }
 }
     
