@@ -70,7 +70,18 @@ public static int searinspos(int[] arr, int target){
     }
     return st;
 }
-        return -1;
+    //find min in rotated sorted array
+    public static int minrotsortarr(int[] arr){
+        int st = 0;
+        int end = arr.length-1;
+        while(st<end){
+            int mid = st+(end-st)/2;
+            if(arr[mid] > arr[end]){
+                st = mid+1;
+            }else{
+                end = mid;
+            }
+        }
+    return arr[st];
     }
-    
 }
