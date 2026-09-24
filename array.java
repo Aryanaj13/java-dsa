@@ -420,5 +420,34 @@ public static int buysellstock2(int[] arr){
         }
       return result;
     }
+     //single number
+    public static int singno(int[] arr){
+        Arrays.sort(arr);
+        for(int i=0;i<arr.length-1;i+=2){
+            if(arr[i] != arr[i+1]){
+               return arr[i];
+            }
+        }
+        return arr[arr.length-1];
+    }
+    //sort array by parity
+    public static int[] sortarrbyparity(int[] arr){
+        int even = 0;
+        int odd = 1;
+        while(even<arr.length && odd < arr.length){
+            if(arr[even] % 2 ==0){
+                even+=2;
+                continue;
+            }
+            if(arr[odd] % 2 != 0){
+                odd+=2;
+                continue;
+            }
+            int temp = arr[even];
+            arr[even] = arr[odd];
+            arr[odd] = temp;
+            }
+            return arr;
+        }
 }
     
