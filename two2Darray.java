@@ -184,6 +184,25 @@ public static void rotatematrix(int[][] matrix){
         }
     }
 }
-
-    
+     //FIND MISSING AND REPEATING NO
+public static int[] missrepeatno(int[][] matrix){
+    int[] freq = new int[matrix.length* matrix.length+1];
+    int repeat =0;
+    int actualsum=0;
+    for(int i=0;i<matrix.length;i++){
+        for(int j=0;j<matrix[0].length;j++){
+            actualsum+=matrix[i][j];
+            freq[matrix[i][j]]++;
+        }
+    }
+    int total = matrix.length*matrix.length;
+    int expectsum = total*(total+1)/2;
+    for(int i=1;i<freq.length;i++){
+        if(freq[i] > 1){
+            repeat = i;
+        }
+    }
+    int missingno = expectsum - actualsum + repeat;
+    return new int[]{repeat, missingno};
+}
 }
