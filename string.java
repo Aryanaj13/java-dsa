@@ -166,4 +166,30 @@ public class string {
             }
             return false;
 }
+    //reverse vowel of a string
+public static String revvowel(String str){
+    StringBuilder sb = new StringBuilder(str);
+    int i = 0;
+    int j = sb.length()-1;
+    while(i < j){
+        char ch = Character.toLowerCase(sb.charAt(i));
+        char ch2 = Character.toLowerCase(sb.charAt(j));
+        boolean isVowel1 = ch == 'a' || ch == 'e' || ch == 'i' || ch == 'o' || ch == 'u';
+        boolean isVowel2 = ch2 == 'a' || ch2 == 'e' || ch2 == 'i' || ch2 == 'o' || ch2 == 'u';
+        if(isVowel1 && isVowel2){
+            char temp = sb.charAt(i);
+            sb.setCharAt(i, sb.charAt(j));
+            sb.setCharAt(j, temp);
+            i++;
+            j--;  
+            }
+        if(!isVowel1){
+            i++;
+        }
+        if(!isVowel2){
+            j--;
+        }
+    }
+    return sb.toString();
+}
 }
