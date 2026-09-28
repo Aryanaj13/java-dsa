@@ -449,5 +449,42 @@ public static int buysellstock2(int[] arr){
             }
             return arr;
         }
+    //two sum 2
+        public static int[] twosum2(int[] arr, int target){
+            int left = 0;
+            int right = arr.length-1;
+            while(left<right){
+                int sum = arr[left] + arr[right];
+                if(sum == target){
+                    return new int[]{left+1, right+1};
+                }else if(sum > target){
+                    right--;
+                }else{
+                    left++;
+                }
+            }
+            return new int[]{-1,-1};
+        }
+      //container with most water
+        public static int contwithmostwater(int[] arr){
+            int left = 0;
+            int right = arr.length-1;
+            int mostwater = 0;
+            while (left<right) {
+                int height = Math.min(arr[left], arr[right]);
+                int width = right - left;
+                int water = height*width;
+                if(mostwater < water){
+                    mostwater = water;
+                }
+                if(arr[left] < arr[right]){
+                    left++;
+                }else{
+                    right--;
+                }
+            }
+            return mostwater;
+        }
+    
 }
     
