@@ -192,4 +192,47 @@ public static String revvowel(String str){
     }
     return sb.toString();
 }
+    //reverse string 2
+        public static String revrsestr(String str, int k){
+            char[] arr = str.toCharArray();
+            for(int i=0;i<arr.length;i+=2*k){
+                int left = i;
+                int right = Math.min(i+k-1, arr.length-1);
+                while(left<right){
+                    char temp = arr[left];
+                    arr[left] = arr[right];
+                    arr[right] = temp;
+                    left++;
+                    right--;
+                }
+            }
+           return new String(arr);
+        }
+//check plaindorme 2 (check palindrom after dleteing one char)
+public static boolean ispalindrom(String str, int left,int  right){
+    while(left < right){
+        if(str.charAt(left) != str.charAt(right)){
+            return false;
+        }
+        left++;
+        right--;
+    }
+    return true;
+}
+public static boolean checkpalind(String str){
+    int left = 0;
+    int right = str.length()-1;
+    while(left < right){
+        if(str.charAt(left) == str.charAt(right)){
+            left++;
+            right--;
+        }
+        else{
+            boolean leftdel = ispalindrom(str, left+1, right);
+            boolean rightdel =ispalindrom(str, left, right-1);
+            return leftdel || rightdel;
+        }
+    }
+    return true;
+}
 }
