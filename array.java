@@ -485,6 +485,103 @@ public static int buysellstock2(int[] arr){
             }
             return mostwater;
         }
+      //two sum 2
+        public static int[] twosum2(int[] arr, int target){
+            int left = 0;
+            int right = arr.length-1;
+            while(left<right){
+                int sum = arr[left] + arr[right];
+                if(sum == target){
+                    return new int[]{left+1, right+1};
+                }else if(sum > target){
+                    right--;
+                }else{
+                    left++;
+                }
+            }
+            return new int[]{-1,-1};
+        }
+    //boats to save people
+public static int boatsavepeople(int[] arr, int limit){
+    Arrays.sort(arr);
+    int boat = 0;
+    int left = 0;
+    int right = arr.length-1;
+    while (left <= right) {
+        if(arr[left] + arr[right] <=  limit){
+            left++;
+            right--;
+        }else{
+            right--;
+        }
+        boat++;
+    }
+    return boat;
+}
+    //sliding window 
+//max avg sub array
+public static double maxsubavg(int[] arr, int k){
+    double max = 0;
+    double avg = 0;
+    int sum = 0;
+    for(int i=0;i<k;i++){
+        sum += arr[i];
+        avg = (double) sum / k;
+    }
+    max = avg;
+    for(int i=k;i<arr.length;i++){
+        sum = sum-arr[i-k]+arr[i];
+        avg = (double) sum/k;
+        max = Math.max(avg, max);
+    }
+    return max;
+} 
+    // defuse the bomb
+public static int[] defusebomb(int[] arr, int k){
+    int[] ans = new int[arr.length];
+     if(k>0){
+        int sum = 0;
+        for(int i=1; i<=k;i++){
+        sum+= arr[i % arr.length];
+        }
+        ans[0] = sum;
+        for(int i=1;i<arr.length;i++){
+            sum = sum-arr[i]+arr[(i+k) % arr.length];
+            ans[i] = sum;
+        }
+    }else if(k<0){
+        int sum = 0;
+        for(int i=arr.length-1;i>=arr.length+k;i--){
+            sum+=arr[i%arr.length];
+        }
+        ans[0] = sum;
+        for(int i=1;i<arr.length;i++){
+            sum = sum -  arr[(arr.length + k+i-1) % arr.length]+ arr[(i - 1 + arr.length) % arr.length];;
+            ans[i] = sum;
+        }
+
+    }else{
+        for(int i=0;i<arr.length;i++){
+            ans[i] = 0;
+        }
+    }
+    return ans;
+}
+    /min size subarray sum (sliding window variavle window)
+public static int minsizesubarrsum(int[] arr, int target){
+    int left = 0;
+    int sum = 0;
+    int length = Integer.MAX_VALUE;
+    for(int right = 0;right<arr.length;right++){
+        sum+=arr[right];
+        while(sum>=target){
+            length = Math.min(length, right-left+1);
+            sum = sum-arr[left];
+            left++;
+        }
+    }
+    return length;
+}
     
 }
     
