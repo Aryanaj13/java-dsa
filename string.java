@@ -235,4 +235,95 @@ public static boolean checkpalind(String str){
     }
     return true;
 }
+    //revrse words in a string
+public static String revword(String str){
+    char[] arr = str.toCharArray();
+    int left = 0;
+    int right = str.length()-1;
+    while(left < right){
+        char temp = arr[left];
+        arr[left] = arr[right];
+        arr[right] = temp;
+        left++;
+        right--;
+    }
+    int start = 0;
+    for(int i=0;i<arr.length;i++){
+        if(arr[i] == ' '){
+            int l = start;
+            int r = i-1;
+            while(l < r){
+                char temp = arr[l];
+                arr[l] = arr[r];
+                arr[r] = temp;
+                l++;
+                r--;
+            }
+            start = i+1;
+        }
+    }
+    int l = start;
+    int r = arr.length-1;
+    while (l < r) {
+    char temp = arr[l];
+    arr[l] = arr[r];
+    arr[r] = temp;
+
+    l++;
+    r--;
+}
+    return new String(arr);
+}
+    //min length of string after deleting similar ends
+public static int minlenstrafterdelsimchar(String str){
+    int left = 0;
+    int right = str.length()-1;
+    while(left < right && str.charAt(left) == str.charAt(right)){
+        char ch = str.charAt(left);
+        while (left < right && str.charAt(left) == ch) {
+            left++;
+        }
+        while(left < right && str.charAt(right) == ch){
+            right--;
+        }
+    }
+    return right-left+1;
+}
+    // substring of size three with distinct character
+public static int substrofsize3dischart(String str){
+    int count = 0;
+    for(int i=0;i<=str.length()-3;i++){
+        char a = str.charAt(i);
+            char b = str.charAt(i+1);
+            char c = str.charAt(i+2);
+            if(a != b && a != c && b != c){
+                count++;
+            }
+}
+return count;
+}
+    //minimum recolors to get k consecutive blcak block 
+public static int minrectogetkconsblackblock(String str, int k){
+    int left = 0;
+    int right = k;
+    int whitecount = 0;
+    for(int i=0;i<k;i++){
+        if(str.charAt(i) == 'w'){
+            whitecount++;
+        }
+    }
+        int min = whitecount;
+        while(right < str.length()){
+            if(str.charAt(right) == 'w'){
+                whitecount++;
+            }
+            if(str.charAt(left) == 'w'){
+                whitecount--;
+            }
+            left++;
+            right++;
+            min = Math.min(whitecount, min);
+        }
+        return min;
+    }
 }
